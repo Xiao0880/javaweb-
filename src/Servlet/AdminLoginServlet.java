@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
-@WebServlet("/admin_login")
+@WebServlet("/admin/admin_login")
 public class AdminLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -27,10 +27,10 @@ public class AdminLoginServlet extends HttpServlet {
             if (adminService.login(admin_name, admin_password)) {
                 // 登录成功
                 request.getSession().setAttribute("admin_name", admin_name);
-                response.sendRedirect("admin_index.jsp");
+                response.sendRedirect("admin_statistics.do");
             } else {
                 // 登录失败
-                response.sendRedirect("error/admin_login_error.html");
+                response.sendRedirect("admin_login_error.html");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

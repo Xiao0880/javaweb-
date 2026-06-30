@@ -23,7 +23,7 @@ public class tServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-        String sql = "SELECT * FROM books WHERE book_name = '活着'";
+        String sql = "SELECT * FROM book WHERE book_name = '活着'";
         try {
             Connection conn = DBUtil.getConnection();
             PreparedStatement pstmt=conn.prepareStatement(sql);

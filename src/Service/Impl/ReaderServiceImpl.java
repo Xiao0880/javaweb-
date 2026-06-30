@@ -72,4 +72,24 @@ public class ReaderServiceImpl implements ReaderService {
         // 如果当前日期超过截止日期，说明超时
         return currentDate.after(limitDate);
     }
+
+    @Override
+    public List<Reader> searchReaders(String keyword) throws SQLException {
+        return readerDao.searchReaders(keyword);
+    }
+
+    @Override
+    public boolean updateReader(Reader reader) throws SQLException {
+        return readerDao.updateReader(reader);
+    }
+
+    @Override
+    public boolean deleteReader(int readerId) throws SQLException {
+        return readerDao.deleteReader(readerId);
+    }
+
+    @Override
+    public Reader getReaderById(int readerId) throws SQLException {
+        return readerDao.selectReaderById(readerId);
+    }
 }

@@ -20,5 +20,10 @@ public interface ReaderService {
     Reader getReaderInfo(String name) throws SQLException;
     boolean returnBook(int borrowId) throws SQLException;
     boolean isOverdue(int borrowId) throws SQLException;
-
+    
+    // 管理员功能
+    List<Reader> searchReaders(String keyword) throws SQLException;
+    boolean updateReader(Reader reader) throws SQLException;
+    boolean deleteReader(int readerId) throws SQLException;
+    Reader getReaderById(int readerId) throws SQLException;
 }

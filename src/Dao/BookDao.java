@@ -14,4 +14,8 @@ public interface BookDao {
 
 
     Book selectBookById(int bookId) throws SQLException;
+    List<Book> searchBooks(String keyword) throws SQLException;
+    boolean updateBook(Book book) throws SQLException;
+    boolean deleteBook(int bookId) throws SQLException;
+    boolean insertBook(Book book) throws SQLException;
 }

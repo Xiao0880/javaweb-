@@ -9,8 +9,10 @@ import Dao.Impl.ViewBorrowInfoDaoImpl;
 import Dao.ReaderDao;
 import Dao.ViewBorrowInfoDao;
 
+import Service.AdminService;
 import Service.BookService;
 import Service.BorrowService;
+import Service.Impl.AdminServiceImpl;
 import Service.Impl.BookServiceImpl;
 import Service.Impl.BorrowServiceImpl;
 import Service.Impl.ReaderServiceImpl;
@@ -34,6 +36,7 @@ public class listener01 implements ServletContextListener {
         ReaderService readerService = new ReaderServiceImpl();
         BookService bookService = new BookServiceImpl();
         BorrowService borrowService = new BorrowServiceImpl();
+        AdminService adminService = new AdminServiceImpl();
 
         readerService.setReaderDao(readerDao);
         readerService.setViewBorrowInfoDao(view_borrow_infoDao);
@@ -46,6 +49,7 @@ public class listener01 implements ServletContextListener {
         container.put("readerService",readerService);
         container.put("bookService",bookService);
         container.put("borrowService",borrowService);
+        container.put("adminService",adminService);
 
         sce.getServletContext().setAttribute("container",container);
 
