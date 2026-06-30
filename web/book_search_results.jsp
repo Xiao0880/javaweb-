@@ -28,6 +28,7 @@
         <th>图书编号</th>
         <th>图书名称</th>
         <th>作者</th>
+        <th>类型</th>
         <th>出版社</th>
         <th>出版日期</th>
         <th>库存</th>
@@ -40,6 +41,7 @@
         <td><%= book.getBookId() %></td>
         <td><%= book.getBookName() %></td>
         <td><%= book.getAuthor() %></td>
+        <td><%= book.getTypeName()%></td>
         <td><%= book.getPublisher()%></td>
         <td><%= book.getPublishDate()%></td>
         <td><%= book.getStock()%></td>

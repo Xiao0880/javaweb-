@@ -20,7 +20,7 @@ public class BookDaoImpl implements BookDao {
         PreparedStatement pstmt=null;
         ResultSet rs=null;
         // 获取用户输入的搜索关键词
-        String sql = "SELECT * FROM book WHERE book_name LIKE ? OR author LIKE ? OR isbn LIKE ?";
+        String sql = "SELECT book.*, (SELECT type_name FROM book_type WHERE book_type.type_id = book.type_id) AS type_name FROM book WHERE book_name LIKE ? OR author LIKE ? OR isbn LIKE ?";
         conn= DBUtil.getConnection();
         pstmt=conn.prepareStatement(sql);
         String pattern = "%" + keyword + "%";
@@ -34,6 +34,7 @@ public class BookDaoImpl implements BookDao {
             book.setBookId(rs.getInt("book_id"));
             book.setBookName(rs.getString("book_name"));
             book.setAuthor(rs.getString("author"));
+            book.setTypeName(rs.getString("type_name"));
             book.setPublisher(rs.getString("publisher"));
             book.setPublishDate(rs.getDate("publish_date"));
             book.setIsbn(rs.getString("isbn"));
@@ -61,6 +62,7 @@ public class BookDaoImpl implements BookDao {
             book.setBookId(rs.getInt("book_id"));
             book.setBookName(rs.getString("book_name"));
             book.setAuthor(rs.getString("author"));
+            book.setTypeName(rs.getString("type_name"));
             book.setPublisher(rs.getString("publisher"));
             book.setPublishDate(rs.getDate("publish_date"));
             book.setIsbn(rs.getString("isbn"));
