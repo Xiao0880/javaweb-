@@ -1,0 +1,15 @@
+我需要创建一个admin端
+功能需求：
+1.可以增加删除book元组，修改book元组信息
+2.可以增加删除reader元组，修改reader元组信息
+
+UI界面：
+1.登陆之后的首页参考reader_index.jsp文件，在界面中显示今日借阅数，归还数，和借阅人数，库存数等信息。界面为最基础的界面，只有html代码，不生成js和css代码，
+2.增加删除book元组，修改book元组信息的界面book元组信息以table的方式呈现，参考book_search_results.jsp文件图书信息的呈现方式，同样的，界面为最基础的界面，只有html代码，不生成js和css代码。
+3.增加删除reader元组，修改reader元组信息的界面reader元组信息以table的方式呈现，参考book_search_results.jsp文件图书信息的呈现方式，同样的，界面为最基础的界面，只有html代码，不生成js和css代码。
+
+实现方法：
+1.在admin_login.html登陆时，查询admin表，检查输入的姓名和密码是否匹配，参考已有的AdminLoginServlet.java
+2.登陆之后的首页参考reader_index，在顶部导航栏放置用户管理，图书管理两个超链接，并为对应的超链接创建界面（界面只有html代码）
+3.用户管理界面要有一个input text组件和一个按钮作为搜索功能，可以对reader表模糊搜索，在input text 下面是一个table，用来展示对应搜索结果的信息（包含reader表的全部字段）并且最右侧是一个写着修改的超链接，点击超链接跳转到新的界面对对应读者信息进行修改（超链接部分参考超时归还部分PayOvertimeServlet和SearchBookServlet，将搜索到的reader信息放到session里，并在修改界面读取对应的reader_id指定修改对象；读者展示界面参考book_search_results.jsp，读取session里的reader类并调用get方法获取属性值）
+4.图书管理界面参考上面那一点(3.用户管理界面)
