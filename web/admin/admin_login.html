@@ -1,20 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>管理员登陆</title>
+    <title>图书管理系统 - 管理员登录</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<h1>管理员登陆</h1>
-<form action="admin_login" name="loginForm" method="post">
-    <label for="admin_name">姓名：</label>
-    <input type="text" id="admin_name" name="admin_name" required><br>
-    <label for="admin_password">密码：</label>
-    <input type="password" id="admin_password" name="admin_password" required><br>
-    <input type="checkbox" id="remember_me" name="remember_me" value="true">
-    <label for="remember_me">记住我（7天自动登录）</label><br>
-    <a href="../reader_login.html">用户登陆</a><br>
-    <input type="submit" value="登陆">
-</form>
+    <div class="login-container">
+        <h1>管理员登录</h1>
+        <form action="admin_login" name="loginForm" method="post">
+            <label for="admin_name">姓名：</label>
+            <input type="text" id="admin_name" name="admin_name" required>
+            
+            <label for="admin_password">密码：</label>
+            <input type="password" id="admin_password" name="admin_password" required>
+            
+            <input type="checkbox" id="remember_me" name="remember_me" value="true">
+            <label for="remember_me" class="checkbox-label">记住我（7天自动登录）</label>
+            
+            <input type="submit" value="登录">
+            
+            <div class="form-links">
+                <a href="../reader_login.html">用户登录</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
