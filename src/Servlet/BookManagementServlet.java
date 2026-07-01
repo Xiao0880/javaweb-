@@ -25,7 +25,6 @@ public class BookManagementServlet extends HttpServlet {
         ServletContext context = getServletContext();
         Map<String, Object> container = (Map<String, Object>) context.getAttribute("container");
         BookService bookService = (BookService) container.get("bookService");
-        req.setAttribute("searchText", keyword);
         try {
             List<Book> books = bookService.searchBooks(keyword);
             req.setAttribute("books", books);

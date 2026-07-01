@@ -4,8 +4,10 @@
             | File Templates. --%>
             <%@ page contentType="text/html;charset=UTF-8" language="java" %>
                 <% String adminName=(String) session.getAttribute("admin_name"); if (adminName==null ||
-                    adminName.trim().isEmpty()) { response.sendRedirect(request.getContextPath()
-                    + "/admin/admin_login.html" ); return; } List<Reader> readers = (List<Reader>)
+                    adminName.trim().isEmpty())
+                { response.sendRedirect(request.getContextPath()
+                    + "/admin/admin_login.html" );
+                    return; } List<Reader> readers = (List<Reader>)
                         request.getAttribute("readers");
                         String searchText = (String) request.getAttribute("searchText");
                         String error = (String) request.getAttribute("error");

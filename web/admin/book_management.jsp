@@ -70,7 +70,7 @@
                 <form action="admin_book_search.do" method="post" style="display: inline;">
                     <input type="hidden" name="action" value="edit">
                     <input type="hidden" name="book_id" value="<%= book.getBookId() %>">
-                    <input type="hidden" name="searchText" value="<%= searchText %>">
+                    <input type="hidden" name="search_text" value="<%= searchText %>">
                     <button type="submit">修改</button>
                 </form>
                 <form action="admin_book_search.do" method="post" style="display: inline;">
