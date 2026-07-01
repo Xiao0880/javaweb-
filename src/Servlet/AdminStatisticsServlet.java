@@ -1,6 +1,10 @@
 package Servlet;
 
+import Entity.ViewAdminStatistics;
 import JDBC.DBUtil;
+import Service.AdminService;
+import Service.BookService;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,14 +20,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 @WebServlet("/admin/admin_statistics.do")
-public class AdminStatisticsServlet extends HttpServlet {
+public class  AdminStatisticsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Map<String, Object> statistics = new HashMap<>();
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        
+        ServletContext context = getServletContext();
+        Map<String, Object> container = (Map<String, Object>) context.getAttribute("container");
+        AdminService adminService = (AdminService) container.get("adminService");
+        try {
+            ViewAdminStatistics viewAdminStatistics = adminService.getAdminStatistics();
+            req.setAttribute("ViewAdminStatistics", viewAdminStatistics);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        /*
         try {
             conn = DBUtil.getConnection();
             
@@ -78,8 +91,8 @@ public class AdminStatisticsServlet extends HttpServlet {
         } finally {
             DBUtil.close(conn, pstmt, rs);
         }
-        
-        req.setAttribute("statistics", statistics);
+        */
+
         req.getRequestDispatcher("admin_index.jsp").forward(req, resp);
     }
 }

@@ -1,7 +1,12 @@
 package Service;
 
+import Dao.ViewAdminStatisticsDao;
+import Entity.ViewAdminStatistics;
+
 import java.sql.SQLException;
 
 public interface AdminService {
-    public boolean login(String name, String password) throws SQLException;
+    void setViewAdminStatisticsDao(ViewAdminStatisticsDao viewAdminStatisticsDao);
+    boolean login(String name, String password) throws SQLException;
+    ViewAdminStatistics getAdminStatistics() throws SQLException;
 }

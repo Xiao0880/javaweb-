@@ -12,10 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class BorrowDaoImpl implements BorrowDao {
-
-
     private BorrowDao borrowDao;
-
     @Override
     public boolean insertBorrowRecord(Borrow borrow) throws SQLException {
         Connection conn = null;
@@ -34,12 +31,10 @@ public class BorrowDaoImpl implements BorrowDao {
         DBUtil.close(conn, pstmt, null);
         return rows > 0;
     }
-
     @Override
     public List<Borrow> getBorrowRecordsByReaderId(int readerId) throws SQLException {
         return List.of();
     }
-
     @Override
     public boolean updateBorrow(int borrowId) throws SQLException {
         Connection conn = null;
@@ -49,31 +44,26 @@ public class BorrowDaoImpl implements BorrowDao {
             conn = DBUtil.getConnection();
             Date returnDate = new Date(System.currentTimeMillis());
             String sql = "UPDATE borrow SET return_date = ? WHERE borrow_id = ?";
-
             pstmt = conn.prepareStatement(sql);
             pstmt.setDate(1, returnDate);
             pstmt.setInt(2, borrowId);
-
             int rows = pstmt.executeUpdate();
             return rows > 0;
         } finally {
             DBUtil.close(conn, pstmt, null);
         }
     }
-
     @Override
     public Borrow getBorrowById(int borrowId) throws SQLException {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        
         try {
             conn = DBUtil.getConnection();
             String sql = "SELECT * FROM borrow WHERE borrow_id = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, borrowId);
             rs = pstmt.executeQuery();
-            
             if (rs.next()) {
                 Borrow borrow = new Borrow();
                 borrow.setBorrowId(rs.getInt("borrow_id"));

@@ -23,7 +23,6 @@ public class ReaderDaoImpl implements ReaderDao {
         rs=pstmt.executeQuery();
         return rs.next();
     }
-
     private Reader getReader(ResultSet rs, Reader reader) throws SQLException {
         if(rs.next()){
             reader =new Reader();
@@ -36,10 +35,6 @@ public class ReaderDaoImpl implements ReaderDao {
         }
         return reader;
     }
-
-
-
-
     @Override
     public Reader selectReaderbyName(String name) throws SQLException {
         Connection conn = null;

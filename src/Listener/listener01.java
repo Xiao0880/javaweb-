@@ -1,13 +1,7 @@
 package Listener;
 
-import Dao.BookDao;
-import Dao.BorrowDao;
-import Dao.Impl.BookDaoImpl;
-import Dao.Impl.BorrowDaoImpl;
-import Dao.Impl.ReaderDaoImpl;
-import Dao.Impl.ViewBorrowInfoDaoImpl;
-import Dao.ReaderDao;
-import Dao.ViewBorrowInfoDao;
+import Dao.*;
+import Dao.Impl.*;
 
 import Service.AdminService;
 import Service.BookService;
@@ -32,6 +26,7 @@ public class listener01 implements ServletContextListener {
         BookDao bookDao = new BookDaoImpl();
         BorrowDao borrowDao = new BorrowDaoImpl();
         ViewBorrowInfoDao view_borrow_infoDao = new ViewBorrowInfoDaoImpl();
+        ViewAdminStatisticsDao viewAdminStatisticsDao = new ViewAdminStatisticsDaoImpl();
 
         ReaderService readerService = new ReaderServiceImpl();
         BookService bookService = new BookServiceImpl();
@@ -44,6 +39,7 @@ public class listener01 implements ServletContextListener {
         bookService.setBookDao(bookDao);
         borrowService.setBorrowDao(borrowDao);
         borrowService.setBookDao(bookDao);
+        adminService.setViewAdminStatisticsDao(viewAdminStatisticsDao);
 
         Map<String,Object> container=new HashMap<>();
         container.put("readerService",readerService);
