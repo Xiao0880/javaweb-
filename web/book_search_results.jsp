@@ -45,7 +45,10 @@
                     <td><%= book.getPublisher() %></td>
                     <td><%= book.getPublishDate() %></td>
                     <td><%= book.getStock() %></td>
-                    <td><a href="borrow.do?book_id=<%= book.getBookId() %>" class="edit-link">借阅</a></td>
+                    <td>
+                        <a href="book_detail.do?book_id=<%= book.getBookId() %>" style="padding: 6px 14px; background-color: #1890ff; color: white; border-radius: 4px; font-size: 13px; text-decoration: none; margin-right: 8px;">详情</a>
+                        <a href="borrow.do?book_id=<%= book.getBookId() %>" class="edit-link">借阅</a>
+                    </td>
                 </tr>
                 <% } %>
                 <% } else { %>
