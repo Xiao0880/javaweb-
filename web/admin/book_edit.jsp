@@ -64,6 +64,7 @@
                 
                 <div class="form-links">
                     <a href="admin_book_search.do">取消</a>
+                    <a href="book_add.jsp">添加图书</a>
                 </div>
             </form>
             <% } else { %>
