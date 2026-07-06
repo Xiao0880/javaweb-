@@ -52,7 +52,7 @@
                                                 <th>出版社</th>
                                                 <th>出版日期</th>
                                                 <th>ISBN</th>
-                                                <th>类型ID</th>
+                                                <th>类型</th>
                                                 <th>库存</th>
                                                 <th>操作</th>
                                             </tr>
@@ -77,7 +77,8 @@
                                                         <%= book.getIsbn() %>
                                                     </td>
                                                     <td>
-                                                        <%= book.getTypeId() %>
+                                                        <%= book.getTypeName() !=null ? book.getTypeName() :
+                                                            book.getTypeId() %>
                                                     </td>
                                                     <td>
                                                         <%= book.getStock() %>

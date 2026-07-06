@@ -1,6 +1,7 @@
 package Servlet;
 
 import Entity.Book;
+import Entity.BookType;
 import Service.BookService;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -27,8 +28,10 @@ public class BookManagementServlet extends HttpServlet {
         BookService bookService = (BookService) container.get("bookService");
         try {
             List<Book> books = bookService.searchBooks(keyword);
+            List<BookType> bookTypes = bookService.getAllBookTypes();
             req.setAttribute("books", books);
             req.setAttribute("searchText", keyword);
+            req.setAttribute("bookTypes", bookTypes);
             req.getRequestDispatcher("book_management.jsp").forward(req, resp);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -56,8 +59,10 @@ public class BookManagementServlet extends HttpServlet {
             } else if ("edit".equals(action)) {
                 int bookId = Integer.parseInt(req.getParameter("book_id"));
                 Book book = bookService.selectBookById(bookId);
+                List<BookType> bookTypes = bookService.getAllBookTypes();
                 req.setAttribute("book", book);
                 req.setAttribute("search_text", req.getParameter("search_text"));
+                req.setAttribute("bookTypes", bookTypes);
                 req.getRequestDispatcher("book_edit.jsp").forward(req, resp);
             }
         } catch (SQLException e) {

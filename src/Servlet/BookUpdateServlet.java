@@ -1,6 +1,7 @@
 package Servlet;
 
 import Entity.Book;
+import Entity.BookType;
 import Service.BookService;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -14,6 +15,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/admin/admin_book_update.do")
@@ -40,8 +42,10 @@ public class BookUpdateServlet extends HttpServlet {
                 String encodedText = searchText != null ? URLEncoder.encode(searchText, StandardCharsets.UTF_8) : "";
                 resp.sendRedirect(req.getContextPath() + "/admin/admin_book_search.do?search_text=" + encodedText);
             } else {
+                List<BookType> bookTypes = bookService.getAllBookTypes();
                 req.setAttribute("error", "修改图书信息失败");
                 req.setAttribute("book", book);
+                req.setAttribute("bookTypes", bookTypes);
                 req.getRequestDispatcher("book_edit.jsp").forward(req, resp);
             }
         } catch (SQLException e) {

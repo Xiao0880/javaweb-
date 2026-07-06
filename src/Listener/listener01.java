@@ -24,6 +24,7 @@ public class listener01 implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         ReaderDao readerDao = new ReaderDaoImpl();
         BookDao bookDao = new BookDaoImpl();
+        BookTypeDao bookTypeDao = new BookTypeDaoImpl();
         BorrowDao borrowDao = new BorrowDaoImpl();
         ViewBorrowInfoDao view_borrow_infoDao = new ViewBorrowInfoDaoImpl();
         ViewAdminStatisticsDao viewAdminStatisticsDao = new ViewAdminStatisticsDaoImpl();
@@ -37,6 +38,7 @@ public class listener01 implements ServletContextListener {
         readerService.setViewBorrowInfoDao(view_borrow_infoDao);
         readerService.setBorrowDao(borrowDao);
         bookService.setBookDao(bookDao);
+        bookService.setBookTypeDao(bookTypeDao);
         borrowService.setBorrowDao(borrowDao);
         borrowService.setBookDao(bookDao);
         adminService.setViewAdminStatisticsDao(viewAdminStatisticsDao);

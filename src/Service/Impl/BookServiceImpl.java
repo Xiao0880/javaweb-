@@ -1,7 +1,9 @@
 package Service.Impl;
 
 import Dao.BookDao;
+import Dao.BookTypeDao;
 import Entity.Book;
+import Entity.BookType;
 import Service.BookService;
 
 import java.sql.SQLException;
@@ -9,10 +11,16 @@ import java.util.List;
 
 public class BookServiceImpl implements BookService {
     private BookDao bookDao;
+    private BookTypeDao bookTypeDao;
 
     @Override
     public void setBookDao(BookDao bookDao) {
         this.bookDao = bookDao;
+    }
+
+    @Override
+    public void setBookTypeDao(BookTypeDao bookTypeDao) {
+        this.bookTypeDao = bookTypeDao;
     }
 
     @Override
@@ -43,5 +51,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book selectBookById(int bookId) throws SQLException {
         return bookDao.selectBookById(bookId);
+    }
+
+    @Override
+    public List<BookType> getAllBookTypes() throws SQLException {
+        return bookTypeDao.getAllBookTypes();
     }
 }
